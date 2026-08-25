@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Skin Cancer Prevention — Health Matters Karalee</title>
+<style>
+  @page { size: A4; margin: 0; }
+
+  :root{
+    --purple: #4B0055;
+    --purple-deep: #37003E;
+    --teal: #6CC5C5;
+    --teal-deep: #2E8482;
+    --red: #DB0029;
+    --paper: #FBF6EF;
+    --paper-2: #F3EAE0;
+    --ink: #2B1830;
+    --ink-soft: #5B4A5F;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html,body{
+    margin:0; padding:0;
+    width:100%; height:100%;
+    overflow:hidden;
+    font-family:'Liberation Sans','Arial',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+  }
+
+  body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .page{
+    width:210mm; height:297mm;
+    display:flex; flex-direction:column;
+    position:relative;
+    overflow:hidden;
+    flex-shrink:0;
+    transform-origin:center center;
+  }
+
+  @media print{
+    html,body{ display:block; overflow:visible; width:210mm; height:297mm; }
+    .page{ transform:none !important; }
+  }
+
+  /* ===== HEADER ===== */
+  .header{
+    background:var(--purple);
+    padding:9mm 14mm 8mm 14mm;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:relative;
+    overflow:hidden;
+  }
+  .header::after{
+    content:"";
+    position:absolute;
+    right:-30mm; top:-30mm;
+    width:90mm; height:90mm;
+    border-radius:50%;
+    border:2mm solid rgba(108,197,197,0.14);
+  }
+  .header img{ height:11mm; display:block; position:relative; z-index:2; }
+  .header .eyebrow{
+    color:var(--teal);
+    font-size:9pt;
+    font-weight:700;
+    letter-spacing:2.2pt;
+    text-transform:uppercase;
+    text-align:right;
+    position:relative; z-index:2;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:11mm 14mm 6mm 14mm;
+    display:flex;
+    align-items:flex-start;
+    gap:8mm;
+  }
+  .hero-text{ flex:1; }
+  .hero-text h1{
+    font-size:22pt;
+    line-height:1.18;
+    color:var(--purple);
+    font-weight:700;
+    letter-spacing:-0.3pt;
+  }
+  .hero-text h1 em{
+    font-style:normal;
+    color:var(--teal-deep);
+  }
+  .hero-text p{
+    margin-top:4mm;
+    font-size:11pt;
+    line-height:1.5;
+    color:var(--ink-soft);
+    max-width:120mm;
+  }
+
+  .sunbadge{
+    flex-shrink:0;
+    width:30mm; height:30mm;
+    position:relative;
+  }
+  .sunbadge svg{ width:100%; height:100%; }
+
+  /* ===== DIVIDER ===== */
+  .divider{
+    margin:0 14mm;
+    height:0.6mm;
+    background:linear-gradient(90deg, var(--teal) 0%, var(--paper-2) 100%);
+    border-radius:2px;
+  }
+
+  /* ===== BODY GRID ===== */
+  .body-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9mm;
+    padding:8mm 14mm 0 14mm;
+  }
+
+  .risk-strip{
+    flex:1;
+    margin:7mm 14mm 0 14mm;
+    padding:5mm 6mm;
+    background:var(--paper-2);
+    border-radius:3mm;
+    display:flex;
+    flex-direction:column;
+    gap:3mm;
+  }
+  .risk-strip h4{
+    font-size:9.5pt;
+    color:var(--purple);
+    font-weight:700;
+    letter-spacing:0.2pt;
+  }
+  .chips{ display:flex; flex-wrap:wrap; gap:2.5mm; }
+  .chip{
+    font-size:8.6pt;
+    color:var(--purple);
+    background:#FFFFFF;
+    border:0.3mm solid var(--teal);
+    border-radius:20mm;
+    padding:1.8mm 4mm;
+    white-space:nowrap;
+  }
+
+  .col-title{
+    display:flex;
+    align-items:baseline;
+    gap:3mm;
+    margin-bottom:5mm;
+  }
+  .col-title .num{
+    font-size:9pt;
+    font-weight:700;
+    color:var(--paper);
+    background:var(--purple);
+    width:6mm; height:6mm;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .col-title h2{
+    font-size:13.5pt;
+    color:var(--purple);
+    font-weight:700;
+    letter-spacing:-0.2pt;
+  }
+
+  .section-lead{
+    font-size:9pt;
+    color:var(--ink-soft);
+    line-height:1.4;
+    margin-bottom:3.5mm;
+  }
+
+  /* Habit rows */
+  .habit{
+    display:flex;
+    gap:4mm;
+    padding:3.4mm 0;
+    border-bottom:0.3mm solid var(--paper-2);
+  }
+  .habit:last-child{ border-bottom:none; }
+  .habit-icon{
+    flex-shrink:0;
+    width:11mm; height:11mm;
+    border-radius:50%;
+    background:var(--teal);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .habit-icon svg{ width:6mm; height:6mm; }
+  .habit-text b{
+    font-size:10.3pt;
+    color:var(--ink);
+    display:block;
+    margin-bottom:0.6mm;
+  }
+  .habit-text span{
+    font-size:9.2pt;
+    color:var(--ink-soft);
+    line-height:1.35;
+  }
+
+  /* ABCDE grid */
+  .abcde{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:2.4mm;
+    margin-bottom:5mm;
+  }
+  .abcde-row{
+    display:flex;
+    align-items:center;
+    gap:3.5mm;
+    background:var(--paper-2);
+    border-radius:2mm;
+    padding:2.6mm 3.5mm;
+  }
+  .abcde-letter{
+    width:8mm; height:8mm;
+    border-radius:50%;
+    background:var(--purple);
+    color:var(--paper);
+    font-weight:700;
+    font-size:10.5pt;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .abcde-row div p{
+    font-size:8.8pt;
+    line-height:1.3;
+  }
+  .abcde-row div p b{ color:var(--purple); }
+
+  .seeus{
+    background:#FFFFFF;
+    border:0.4mm solid var(--red);
+    border-radius:2.5mm;
+    padding:4mm 5mm;
+  }
+  .seeus h3{
+    font-size:10.3pt;
+    color:var(--red);
+    font-weight:700;
+    margin-bottom:2mm;
+    letter-spacing:0.2pt;
+  }
+  .seeus ul{ list-style:none; }
+  .seeus li{
+    font-size:9pt;
+    color:var(--ink);
+    line-height:1.5;
+    padding-left:4mm;
+    position:relative;
+  }
+  .seeus li::before{
+    content:"";
+    position:absolute;
+    left:0; top:2.1mm;
+    width:1.6mm; height:1.6mm;
+    border-radius:50%;
+    background:var(--red);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer{
+    background:var(--purple);
+    padding:7mm 14mm 8mm 14mm;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8mm;
+  }
+  .footer-cta h3{
+    color:var(--paper);
+    font-size:13pt;
+    font-weight:700;
+    margin-bottom:1.5mm;
+  }
+  .footer-cta p{
+    color:var(--teal);
+    font-size:9pt;
+    line-height:1.4;
+    max-width:110mm;
+  }
+  .footer-contact{
+    text-align:right;
+    color:var(--paper);
+    font-size:9pt;
+    line-height:1.55;
+    flex-shrink:0;
+  }
+  .footer-contact .fill{
+    color:rgba(251,246,239,0.55);
+    font-style:italic;
+  }
+  .disclaimer{
+    text-align:center;
+    font-size:7pt;
+    color:var(--ink-soft);
+    padding:3mm 14mm 4mm 14mm;
+    line-height:1.4;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <img src="data:image/png;base64,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" alt="Health Matters Karalee">
+    <div class="eyebrow">Patient Information</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Skin cancer is one of the<br>most <em>preventable</em> cancers there is.</h1>
+      <p>A few daily habits — and one honest look in the mirror every few months — make the biggest difference. Here's what actually works.</p>
+    </div>
+    <div class="sunbadge">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="47" fill="none" stroke="#6CC5C5" stroke-width="3"/>
+        <g stroke="#6CC5C5" stroke-width="3" stroke-linecap="round">
+          <line x1="50" y1="6" x2="50" y2="16"/>
+          <line x1="50" y1="84" x2="50" y2="94"/>
+          <line x1="6" y1="50" x2="16" y2="50"/>
+          <line x1="84" y1="50" x2="94" y2="50"/>
+          <line x1="18" y1="18" x2="25" y2="25"/>
+          <line x1="75" y1="75" x2="82" y2="82"/>
+          <line x1="82" y1="18" x2="75" y2="25"/>
+          <line x1="25" y1="75" x2="18" y2="82"/>
+        </g>
+        <circle cx="50" cy="50" r="22" fill="#4B0055"/>
+        <circle cx="50" cy="50" r="22" fill="none" stroke="#DB0029" stroke-width="3"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="body-grid">
+
+    <!-- COLUMN 1: Daily habits -->
+    <div>
+      <div class="col-title"><span class="num">1</span><h2>Protect your skin, every day</h2></div>
+
+      <div class="habit">
+        <div class="habit-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 4L2 8l3 3 2-2v11h10V9l2 2 3-3-4-4h-3a3 3 0 0 1-6 0H6z" stroke="#4B0055" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="habit-text">
+          <b>Cover up</b>
+          <span>Loose, sleeved clothing and a broad-brimmed hat block far more UV than sunscreen alone.</span>
+        </div>
+      </div>
+
+      <div class="habit">
+        <div class="habit-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3h6l1 3H8l1-3z" stroke="#4B0055" stroke-width="1.6" stroke-linejoin="round"/><rect x="7" y="6" width="10" height="15" rx="2" stroke="#4B0055" stroke-width="1.6"/><path d="M9 11h6M9 15h4" stroke="#4B0055" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <div class="habit-text">
+          <b>Apply SPF50+, and reapply</b>
+          <span>Broad-spectrum, water-resistant. One coat in the morning doesn't last all day — reapply every 2 hours, more if you swim or sweat.</span>
+        </div>
+      </div>
+
+      <div class="habit">
+        <div class="habit-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v3M4.2 6.2l2 2M20 6.2l-2 2" stroke="#4B0055" stroke-width="1.6" stroke-linecap="round"/><path d="M6 15a6 6 0 0 1 12 0" stroke="#4B0055" stroke-width="1.6"/><path d="M3 15h18l-1.5 5h-15L3 15z" stroke="#4B0055" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="habit-text">
+          <b>Seek shade, 10am–3pm</b>
+          <span>That's when UV is highest — plan outdoor tasks and errands either side of it where you can.</span>
+        </div>
+      </div>
+
+      <div class="habit">
+        <div class="habit-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="14" r="3" stroke="#4B0055" stroke-width="1.6"/><circle cx="18" cy="14" r="3" stroke="#4B0055" stroke-width="1.6"/><path d="M9 14h6M3 14l1-4h16l1 4" stroke="#4B0055" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="habit-text">
+          <b>Wear wrap-around sunglasses</b>
+          <span>UV damages your eyes and the thin skin around them too — worth making a habit.</span>
+        </div>
+      </div>
+
+      <div class="habit">
+        <div class="habit-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 0 1 0 20 10 10 0 0 1 0-20z" stroke="#4B0055" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="#4B0055" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <div class="habit-text">
+          <b>Check the UV index, not the weather</b>
+          <span>In Queensland it's 3 or above most of the year — including on cloudy, overcast days.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: Know your skin -->
+    <div>
+      <div class="col-title"><span class="num">2</span><h2>Know your skin</h2></div>
+      <p class="section-lead">Get familiar with your moles and spots, and check them every few months using the ABCDE method — if you spot any of these, get it looked at.</p>
+
+      <div class="abcde">
+        <div class="abcde-row">
+          <div class="abcde-letter">A</div>
+          <div><p><b>Asymmetry</b> — one half of a spot doesn't match the other</p></div>
+        </div>
+        <div class="abcde-row">
+          <div class="abcde-letter">B</div>
+          <div><p><b>Border</b> — ragged, blurred or uneven edges</p></div>
+        </div>
+        <div class="abcde-row">
+          <div class="abcde-letter">C</div>
+          <div><p><b>Colour</b> — uneven shades of brown, black, red or white</p></div>
+        </div>
+        <div class="abcde-row">
+          <div class="abcde-letter">D</div>
+          <div><p><b>Diameter</b> — bigger than a pencil eraser, or growing</p></div>
+        </div>
+        <div class="abcde-row">
+          <div class="abcde-letter">E</div>
+          <div><p><b>Evolving</b> — any change in size, shape, colour, or a new itch, bleed or tenderness</p></div>
+        </div>
+      </div>
+
+      <div class="seeus">
+        <h3>Book a check if you notice —</h3>
+        <ul>
+          <li>A spot or sore that hasn't healed in 4 weeks</li>
+          <li>A mole that's changed shape, size or colour</li>
+          <li>A new growth that keeps growing</li>
+          <li>A scaly, red patch that won't settle down</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="risk-strip">
+    <h4>Your risk is higher if you have —</h4>
+    <div class="chips">
+      <span class="chip">Fair skin, freckles or red/blonde hair</span>
+      <span class="chip">Lots of moles</span>
+      <span class="chip">Family history of skin cancer</span>
+      <span class="chip">A previous skin cancer</span>
+      <span class="chip">Blistering sunburns as a child</span>
+      <span class="chip">Outdoor work, sport or a farming background</span>
+      <span class="chip">A weakened immune system</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-cta">
+      <h3>Book your skin check</h3>
+      <p>Most skin cancers caught early are simple to treat. A full skin check with one of our doctors takes about 30 minutes.</p>
+    </div>
+    <div class="footer-contact">
+      <div>(07) 3812 3133</div>
+      <div>137425 or 134100 (After Hours)</div>
+      <div>4 Centre Court, Chuwar, 4306</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    This flyer provides general health information only and does not replace individual medical advice. If you're concerned about a spot on your skin, please book an appointment.
+  </div>
+
+</div>
+
+<script>
+  function fitPageToScreen(){
+    var page = document.querySelector('.page');
+    if(!page) return;
+    if(window.matchMedia && window.matchMedia('print').matches) return;
+    var pageWidth = page.offsetWidth;
+    var pageHeight = page.offsetHeight;
+    var scale = Math.min(window.innerWidth / pageWidth, window.innerHeight / pageHeight, 1);
+    page.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('load', fitPageToScreen);
+  window.addEventListener('resize', fitPageToScreen);
+  window.addEventListener('orientationchange', function(){ setTimeout(fitPageToScreen, 100); });
+</script>
+</body>
+</html>
